@@ -43,13 +43,8 @@ Click "Publish" on the left-hand side to pubish the item.
 11. The trial is ended here. Click "Logout" on the navigation bar to return to index.html.
 
 5 more machine learning models are attached here for you to try on.
-Tops, Bottoms, Underwear (Pants / Clothes / Underwear):
-https://teachablemachine.withgoogle.com/models/dt4CQbjiI/ 
-Tops Types (Cardigan / Jacket / Shirts):
-https://teachablemachine.withgoogle.com/models/R47ShBzBA/
-Underwear Types (Boxer / Vest / Y-front):
-https://teachablemachine.withgoogle.com/models/EbBJPC9Xz/
-Bottoms Types (Pants / Shorts / Skirt):
-https://teachablemachine.withgoogle.com/models/4Wwdt6IrS/ 
-Branding (Adidas / Nike / New Balance):
-https://teachablemachine.withgoogle.com/models/rKEoCcrmp/
+Tops, Bottoms, Underwear (Pants / Clothes / Underwear): https://teachablemachine.withgoogle.com/models/dt4CQbjiI/ 
+Tops Types (Cardigan / Jacket / Shirts): https://teachablemachine.withgoogle.com/models/R47ShBzBA/
+Underwear Types (Boxer / Vest / Y-front): https://teachablemachine.withgoogle.com/models/EbBJPC9Xz/
+Bottoms Types (Pants / Shorts / Skirt): https://teachablemachine.withgoogle.com/models/4Wwdt6IrS/ 
+Branding (Adidas / Nike / New Balance): https://teachablemachine.withgoogle.com/models/rKEoCcrmp/
