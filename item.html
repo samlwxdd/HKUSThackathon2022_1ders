@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Website initialization -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- jQuery Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- MaterializeCSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+
+<!-- Tensorflow Machine Learning -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+
+<!-- Defining shortcut icon -->
+<link rel="shortcut icon" href="/images/icon.png">
+
+<!-- Font type -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+<!-- Self-defined stylesheet -->
+<link href="/elements/style.css" rel="stylesheet">
+
+<!-- Warning for customers who did not enable JS -->
+<noscript>Your browser does not support JavaScript.
+    Please enable it to enjoy the full feature of this website.</noscript>
+
+<title>Yellow Blouse | Good1.com</title>
+</head>
+
+<body>
+
+<!-- Top navigation bar: Desktop version -->
+<nav>
+  <div class="nav-wrapper">
+    <a href="index.html" class="brand-logo"><img src="/images/logo.png" alt="Good1.com icon" height="60px"></a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" style="padding-left: 10px;">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li style="padding-right: 10px"> Hello: Sam</li>
+      <li><a href="login_index.html">Index</a></li>
+      <li><a href="cart.html">Shopping Cart</a></li>
+      <li><a href="index.html">Logout</a></li>
+      <li><a href="buyers.html">Backend (As a Buyer)</a></li>
+      <li><a href="sellers.html">Upload Items (As a Seller)</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Top navigation bar: Mobile version -->
+<ul class="sidenav" id="mobile-demo">
+  <li style="padding: 0 25px">Hello: Sam</li>
+  <li><a href="login_index.html">Index</a></li>
+  <li><a href="cart.html">Shopping Cart</a></li>
+  <li><a href="index.html">Logout</a></li>
+  <li><a href="buyers.html">Backend (As a Buyer)</a></li>
+  <li><a href="sellers.html">Upload Items (As a Seller)</a></li>
+</ul>
+
+<!-- Carousel (Promotional offers) -->
+<div class="carousel carousel-slider center" style="height: 200px">
+  <div class="carousel-fixed-item center">
+    <a class="btn waves-effect white grey-text darken-text-2">Get this offer</a>
+  </div>
+  <div class="carousel-item red white-text" href="#one!">
+    <h2>Promotion 1</h2>
+    <p class="white-text">Buy real get one NFT (on Polygon Chain).</p>
+  </div>
+  <div class="carousel-item amber white-text" href="#two!">
+    <h2>Promotion 2</h2>
+    <p class="white-text">Free shipping to HKUST!</p>
+  </div>
+</div>
+
+<br><br>
+
+<!-- Product Information -->
+<div class="container">
+
+  <div class="row">
+    <div class="col s12 l6">
+      <img class="materialboxed" width="250" src="/images/clothes/yellow blouse-1.png">
+    </div>
+    <div class="col s12 l6">
+      <p><h5>Yellow Blouse</h5></p>
+      <div class="chip" style="background-color: #90caf9;"><i class="material-icons" style="padding-top: 5px;">attach_money</i>HKD 80</div>
+      <br>
+      <div class="chip">Female</div>
+      <div class="chip">Shirts</div>
+      <div class="chip">Shop ABC</div>
+      <br>
+      From <a>Shop ABC</a>
+      <br>
+      Uploaded on 13/04/2022 17:25
+      <br><br>
+
+      <form>
+        <div class="number">
+        <div class="col s3">
+          <select>
+          <option value="" disabled>Size</option>
+          <option value="S" selected>S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="2XL">2XL</option>
+        </select>
+        </div>
+
+        <div class="col s3">
+        <a class="btn-floating btn-large red minus"><i class="material-icons">remove</i></a>
+        </div>
+        <div class="col s3"><input type="text" value="1" id="quantity"/>Total Price: <input type="text" value="80" id="price" disabled/></div>
+        <div class="col s3">
+          <a class="btn-floating btn-large red plus"><i class="material-icons">add</i></a>
+        </div>
+      </div>
+      <br><br><br><br><br><br>
+    <a class="waves-effect waves-light btn-small modal-trigger" href="#window"><i class="material-icons left">shopping_cart</i>Add to cart</a>
+    <a class="waves-effect waves-light btn-small" href="https://testnets.opensea.io/assets/mumbai/0x2953399124f0cbb46d2cbacd8a89cf0599974963/38992937180412949219028499353004338401378624851777444872802005177587969556481/" target="_blank"><i class="material-icons left">image</i>View on OpenSea</a>
+    </form>
+    </div>
+    
+  </div>
+
+  <div class="row">
+    
+    <!-- Display similar items and recommendation -->
+    <div class="col s12 l4">
+      <div>
+        <ul class="collapsible expandable">
+          <li class="active">
+            <div class="collapsible-header"><i class="material-icons">filter_drama</i>Similar items you own</div>
+            <div class="collapsible-body">
+            <a>From NFT collection</a><br><img src="/images/clothes/yellow blouse-1.png" width="100px">
+            <br>
+            <a>From real-life collection</a>
+            <br><img src="/images/clothes/yellow blouse-1.png" width="100px">
+            <img src="/images/clothes/yellow blouse-2.png" width="100px">
+            </div>
+          </li>
+          <li class="active">
+            <div class="collapsible-header"><i class="material-icons">place</i>You've visited</div>
+            <div class="collapsible-body">
+            <a>Dress from Shop DEF</a><br><img src="/images/clothes/dress.png" width="100px" style="padding-top:10px">
+            </div>
+          </li>
+          <li class="active">
+            <div class="collapsible-header"><i class="material-icons">thumb_up</i>Recommended to you</div>
+            <div class="collapsible-body">
+            <a>Pink Blouse from Shop GHI</a><br><img src="/images/clothes/pink-blouse.png" width="100px" style="padding-top:10px">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="row">
+    <div class="col s12 l8">
+      <ul class="tabs">
+        <li class="tab col s4"><a class="active" href="#test1">Description</a></li>
+        <li class="tab col s4"><a href="#test2">Details</a></li>
+      </ul>
+    </div>
+    <div id="test1" class="col s12 l8">
+      <p>This is a description describing how good the yellow blouse is. <br>The first 100 characters will be shown on the front page for user's reference.</p>
+      <div class="center"><img class="responsive-img" src="/images/clothes/model-yellow-blouse.jpg" width="200px"></div>
+    </div>
+    <div id="test2" class="col s12 l8">
+      <br>
+      <table>
+      <tr>
+        <th>Size</th>
+        <th>Length (in CM)</th>
+        <th>Width (in CM)</th>
+      </tr>
+      <tr>
+        <th>S</th>
+        <td>55.9</td>
+        <td>37.5</td>
+      </tr>
+      <tr>
+        <th>M</th>
+        <td>58.4</td>
+        <td>40.0</td>
+      </tr>
+      <tr>
+        <th>L</th>
+        <td>61.0</td>
+        <td>42.5</td>
+      </tr>
+      <tr>
+        <th>XL</th>
+        <td>63.5</td>
+        <td>45.0</td>
+      </tr>
+      <tr>
+        <th>2XL</th>
+        <td>66.0</td>
+        <td>47.6</td>
+      </tr>
+      </table>
+      <br>
+      Categories: 
+      <div class="chip">Female</div>
+      <div class="chip">Clothes</div>
+      <div class="chip">Shirts</div>
+      <br>
+      Texture: Soft
+      <br>
+      Manufacturer: <a>Shop ABC</a>
+      <br>
+
+    </div>
+    </div>
+
+  </div>
+
+  <!-- Pop-up window -->
+  <div id="window" class="modal">
+    <div class="modal-content">
+      <h4>Friendly Reminder</h4>
+      <p>You are about to purchase Yellow Blouse (Size: S ; Quantity: 1) from <a>Shop ABC</a>.</p>
+      <p>However, according to our record, you own the following similar items.</p>
+      <table>
+        <tr>
+          <th>From your NFT collection</th>
+          <th>From your real-life collection</th>
+        </tr>
+        <tr>
+          <th>
+            <img src="/images/clothes/yellow blouse-1.png" width="100px">
+          </th>
+          <th>
+            <img src="/images/clothes/yellow blouse-1.png" width="100px">
+            <img src="/images/clothes/yellow blouse-2.png" width="100px">
+          </th>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <a href="cart.html" class="modal-close waves-effect waves-green btn"><i class="material-icons" style="padding-right: 10px">shopping_cart</i>Proceed to checkout</a>
+      <a class="modal-close waves-effect waves-green btn" style="background-color:red" onclick="instance.close();"><i class="material-icons" style="padding-right: 10px">close</i>Let me reconsider</a>
+    </div>
+  </div>
+          
+</div>
+
+<!-- Floating button on the right bottom corner -->
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">question_mark</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating red" href="mailto:cs@good1.com"><i class="material-icons">email</i></a></li>
+    <li><a class="btn-floating yellow darken-1" href="tel:+85212345678"><i class="material-icons">call</i></a></li>
+  </ul>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+    <div class="container">
+    <div class="row">
+        <div class="col l6 s12">
+        <h5 class="white-text">Good1.com</h5>
+        <p class="grey-text text-lighten-4">This is some kind of random text describing Good1.com, a place for you to shop for good items.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+            <li><a class="grey-text text-lighten-3" href="login_index.html">Index</a></li>
+            <li><a class="grey-text text-lighten-3" href="cart.html">Shopping Cart</a></li>
+            <li><a class="grey-text text-lighten-3" href="logout.html">Logout</a></li>
+            <li><a class="grey-text text-lighten-3" href="buyers.html">Backend (As a Buyer)</a></li>
+            <li><a class="grey-text text-lighten-3" href="sellers.html">Upload Items (As a Seller)</a></li>
+        </ul>
+        </div>
+    </div>
+    </div>
+    <div class="footer-copyright">
+    <div class="container">
+    © 2022 Good1.com
+    </div>
+    </div>
+</footer>
+
+<!-- Inititializing elements in webpage -->
+<script>
+/* Initializing tabs */
+$(document).ready(function(){
+    $('.tabs').tabs();
+});
+
+/* Initializing pop-up window */
+$(document).ready(function(){
+    $('.modal').modal();
+});
+
+/* Size selection button */
+$(document).ready(function(){
+    $('select').formSelect();
+});
+
+/* Initializing collapsible function */
+var elem = document.querySelector('.collapsible.expandable');
+var instance = M.Collapsible.init(elem, {
+    accordion: false
+});
+
+/* Initializing navigation bar: Mobile version */
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+});
+
+/* Initializing floating button on the right bottom corner */
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+    direction: 'left',
+    hoverEnabled: false
+    });
+});
+
+/* Initializing carousel (promotional offers) */
+$('.carousel.carousel-slider').carousel({
+    fullWidth: true
+});
+
+/* Add/Minus product quantity */
+$(document).ready(function() {
+    $('.minus').click(function () {
+        var $input = $(this).parent().parent().find('#quantity');
+        var count = parseInt($input.val()) - 1;
+        count = count < 1 ? 1 : count;
+        $input.val(count);
+        $input.change();
+
+        var $output = $(this).parent().parent().find('#price');
+        var price = $input.val() * 80;
+        $output.val(price);
+        $output.change();
+
+        return false;
+    });
+
+    $('.plus').click(function () {
+        var $input = $(this).parent().parent().find('#quantity');
+        $input.val(parseInt($input.val()) + 1);
+        $input.change();
+
+        var $output = $(this).parent().parent().find('#price');
+        var price = $input.val() * 80;
+        $output.val(price);
+        $output.change();
+
+        return false;
+    });
+    });
+</script>
+
+</body>
+</html>

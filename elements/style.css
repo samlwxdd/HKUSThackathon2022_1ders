@@ -1,0 +1,24 @@
+body, button {
+    font-family: 'Roboto', sans-serif;
+}
+
+nav  {
+    background-color: #90caf9;
+}
+
+.collapsible, .card {
+    box-shadow: none;
+}
+
+.carousel.carousel-slider .carousel-item{
+    min-height:220px;
+  }
+
+.container {
+    width: 80%;
+}
+
+.checkout-btn {
+    border-radius: 12px;
+    box-shadow: none;
+}

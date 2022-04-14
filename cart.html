@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Website initialization -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- jQuery Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- MaterializeCSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+
+<!-- Tensorflow Machine Learning -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+
+<!-- Defining shortcut icon -->
+<link rel="shortcut icon" href="/images/icon.png">
+
+<!-- Font type -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+<!-- Self-defined stylesheet -->
+<link href="/elements/style.css" rel="stylesheet">
+
+<!-- Warning for customers who did not enable JS -->
+<noscript>Your browser does not support JavaScript.
+    Please enable it to enjoy the full feature of this website.</noscript>
+    
+<title>Shopping Cart | Good1.com</title>
+</head>
+
+<body>
+
+<!-- Top navigation bar: Desktop version -->
+<nav>
+  <div class="nav-wrapper">
+    <a href="index.html" class="brand-logo"><img src="/images/logo.png" alt="Good1.com icon" height="60px"></a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" style="padding-left: 10px;">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li style="padding-right: 10px"> Hello: Sam</li>
+      <li><a href="login_index.html">Index</a></li>
+      <li><a href="cart.html">Shopping Cart</a></li>
+      <li><a href="index.html">Logout</a></li>
+      <li><a href="buyers.html">Backend (As a Buyer)</a></li>
+      <li><a href="sellers.html">Upload Items (As a Seller)</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Top navigation bar: Mobile version -->
+<ul class="sidenav" id="mobile-demo">
+  <li style="padding: 0 25px">Hello: Sam</li>
+  <li><a href="login_index.html">Index</a></li>
+  <li><a href="cart.html">Shopping Cart</a></li>
+  <li><a href="index.html">Logout</a></li>
+  <li><a href="buyers.html">Backend (As a Buyer)</a></li>
+  <li><a href="sellers.html">Upload Items (As a Seller)</a></li>
+</ul>
+
+<!-- Carousel (Promotional offers) -->
+<div class="carousel carousel-slider center" style="height: 200px">
+  <div class="carousel-fixed-item center">
+    <a class="btn waves-effect white grey-text darken-text-2">Get this offer</a>
+  </div>
+  <div class="carousel-item red white-text" href="#one!">
+    <h2>Promotion 1</h2>
+    <p class="white-text">Buy real get one NFT (on Polygon Chain).</p>
+  </div>
+  <div class="carousel-item amber white-text" href="#two!">
+    <h2>Promotion 2</h2>
+    <p class="white-text">Free shipping to HKUST!</p>
+  </div>
+</div>
+<br><br>
+
+<div class="container row">
+
+  <!-- Instant Check function -->
+  <div class="col s12 l5">
+    <h5>Instant Check!</h5>
+    <p>A feature to compare the clothes you own and those in your cart.</p>
+    <ul class="collapsible expandable">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">question_mark</i>How to use it?</div>
+        <div class="collapsible-body">
+          <p>
+            1. Give us the permission to use your camera.
+            <br><br>
+            2. Show us the clothes you already own.
+            <br><br>
+            3. Our Machine Learning engine will compare the clothes you show us with those in your cart, and compute the similarity index.
+            <br><br>
+            4. If the clothes are too similar, consider removing it from your cart!
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Instant Check: via Teachable Machine -->
+    <a class="waves-effect waves-light btn" onclick="init()"><i class="material-icons left">play_arrow</i>Start</a>
+    <a class="waves-effect waves-light btn" href="cart.html" style="background-color: red"><i class="material-icons left">pause</i>Stop</a>
+    <div id="webcam-container" style="padding-top: 10px;"></div>
+    <div id="label-container"></div>
+
+  </div>
+
+  <!-- Shopping Cart -->
+  <div class="col s12 l7">
+    <h5>Your Shopping Cart</h5>
+    <table>
+      <tr>
+        <th style="width:5%">Order</th>
+        <th style="width:10%"></th>
+        <th style="width:30%">Product Name</th>
+        <th style="width:50%">Quantity</th>
+        <th style="width:5%">Total Price</th>
+      </tr>
+      <tr>
+        <th>1</th>
+        <td><img src="/images/clothes/yellow blouse-1.png" height="50px">
+        <td><a href="item.html">Yellow Blouse</a>
+        <div class="chip">Female</div>
+        <div class="chip">Shirts</div>
+        <div class="chip">Shop ABC</div>
+        </td>
+        <td>Size S: 
+          <div class="row">
+          <div class="col s6">
+            <input type="number" value="1">
+          </div>
+          <div class="col s6">
+          <a class="btn-small">Update</a>
+          <br><br>
+          <a class="btn-small" style="background-color: red">Remove</a>
+          </div>
+          </div>
+        </td>
+        <td id="priceA">HKD 80</td>
+      </tr>
+
+      <tr>
+        <th>2</th>
+        <td><img src="/images/clothes/dress.png" height="50px"></td>
+        <td>Dress
+        <br>
+        <div class="chip">Unique</div>
+        <div class="chip">Female</div>
+        <div class="chip">Dress</div>
+        <div class="chip">Shop DEF</div>
+        </td>
+        <td>Size S: 
+          <div class="row">
+          <div class="col s6">
+            <input type="number" value="1">
+          </div>
+          <div class="col s6">
+          <a class="btn-small">Update</a>
+          <br><br>
+          <a class="btn-small" style="background-color: red">Remove</a>
+          </div>
+          </div>
+        </td>
+        <td id="priceB">HKD 70</td>
+      </tr>
+
+      <tr>
+        <th>Total</th>
+        <td colspan="4" class="center" id="total">HKD 150</td>
+      </tr>
+    </table>
+    <br>
+    <div class="center">
+    <a class="btn checkout-btn" style="background-color: #0091ea" href="https://www.paypal.com/hk/business/platforms-and-marketplaces"><i class="material-icons left">payment</i>Pay by Credit Card via Paypal</a>
+    <br><br>
+    <a class="btn checkout-btn" style="background-color: #f9a825" href="https://crypto.com/pay-merchant"><i class="material-icons left">currency_bitcoin</i>Pay by Cryptocurrency via Crypto.com Pay</a>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Floating button on the right bottom corner -->
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">question_mark</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating red" href="mailto:cs@good1.com"><i class="material-icons">email</i></a></li>
+    <li><a class="btn-floating yellow darken-1" href="tel:+85212345678"><i class="material-icons">call</i></a></li>
+  </ul>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+    <div class="container">
+    <div class="row">
+        <div class="col l6 s12">
+        <h5 class="white-text">Good1.com</h5>
+        <p class="grey-text text-lighten-4">This is some kind of random text describing Good1.com, a place for you to shop for good items.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+            <li><a class="grey-text text-lighten-3" href="login_index.html">Index</a></li>
+            <li><a class="grey-text text-lighten-3" href="cart.html">Shopping Cart</a></li>
+            <li><a class="grey-text text-lighten-3" href="logout.html">Logout</a></li>
+            <li><a class="grey-text text-lighten-3" href="buyers.html">Backend (As a Buyer)</a></li>
+            <li><a class="grey-text text-lighten-3" href="sellers.html">Upload Items (As a Seller)</a></li>
+        </ul>
+        </div>
+    </div>
+    </div>
+    <div class="footer-copyright">
+    <div class="container">
+    © 2022 Good1.com
+    </div>
+    </div>
+</footer>
+
+<!-- Initializing Teachable Machine -->
+<script type="text/javascript">
+  // More API functions here:
+  // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+  // the link to your model provided by Teachable Machine export panel
+  const URL = "https://teachablemachine.withgoogle.com/models/T4a6F19qK/";
+
+  let model, webcam, labelContainer, maxPredictions;
+
+  // Load the image model and setup the webcam
+  async function init() {
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
+
+      // load the model and metadata
+      // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+      // or files from your local hard drive
+      // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+      model = await tmImage.load(modelURL, metadataURL);
+      maxPredictions = model.getTotalClasses();
+
+      // Convenience function to setup a webcam
+      const flip = true; // whether to flip the webcam
+      webcam = new tmImage.Webcam(300, 300, flip); // width, height, flip
+      await webcam.setup(); // request access to the webcam
+      await webcam.play();
+      window.requestAnimationFrame(loop);
+
+      // append elements to the DOM
+      document.getElementById("webcam-container").appendChild(webcam.canvas);
+      labelContainer = document.getElementById("label-container");
+      for (let i = 0; i < maxPredictions; i++) { // and class labels
+          labelContainer.appendChild(document.createElement("div"));
+      }
+  }
+
+  async function loop() {
+      webcam.update(); // update the webcam frame
+      await predict();
+      window.requestAnimationFrame(loop);
+  }
+
+  // run the webcam image through the image model
+  async function predict() {
+      // predict can take in an image, video or canvas html element
+      const prediction = await model.predict(webcam.canvas);
+      for (let i = 0; i < maxPredictions; i++) {
+          const classPrediction =
+              prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+          labelContainer.childNodes[i].innerHTML = classPrediction;
+      }
+  }
+</script>
+
+<!-- Inititializing elements in webpage -->
+<script>
+/* Initializing tabs */
+$(document).ready(function(){
+    $('.tabs').tabs();
+});
+
+/* Initializing pop-up window */
+$(document).ready(function(){
+    $('.modal').modal();
+});
+
+/* Size selection button */
+$(document).ready(function(){
+    $('select').formSelect();
+});
+
+/* Initializing collapsible function */
+var elem = document.querySelector('.collapsible.expandable');
+var instance = M.Collapsible.init(elem, {
+    accordion: false
+});
+
+/* Initializing navigation bar: Mobile version */
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+});
+
+/* Initializing floating button on the right bottom corner */
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+    direction: 'left',
+    hoverEnabled: false
+    });
+});
+
+/* Initializing carousel (promotional offers) */
+$('.carousel.carousel-slider').carousel({
+    fullWidth: true
+});
+
+/* Add/Minus product quantity */
+$(document).ready(function() {
+    $('.minus').click(function () {
+        var $input = $(this).parent().parent().find('#quantity');
+        var count = parseInt($input.val()) - 1;
+        count = count < 1 ? 1 : count;
+        $input.val(count);
+        $input.change();
+
+        var $output = $(this).parent().parent().find('#price');
+        var price = $input.val() * 80;
+        $output.val(price);
+        $output.change();
+
+        return false;
+    });
+
+    $('.plus').click(function () {
+        var $input = $(this).parent().parent().find('#quantity');
+        $input.val(parseInt($input.val()) + 1);
+        $input.change();
+
+        var $output = $(this).parent().parent().find('#price');
+        var price = $input.val() * 80;
+        $output.val(price);
+        $output.change();
+
+        return false;
+    });
+    });
+</script>
+
+</body>
+</html>
