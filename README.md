@@ -2,6 +2,7 @@
 
 This is the GitHub page for Good1.com, a solution made by Team 1ders under hackUST@2022 to solve the problem of repeated purchasing.
 (For Theme: Smart Shopping / spending / living experience in the era of information overflow)
+(Link to Official website: https://hackust.agorize.com/en/challenges/hackust-2022)
 
 Description on our solution:
 A digital wardrobe, where users store their clothes digitally in the form of NFT, is created under the users' account.
